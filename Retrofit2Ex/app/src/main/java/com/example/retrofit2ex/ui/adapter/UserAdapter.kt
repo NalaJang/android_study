@@ -9,7 +9,7 @@ import com.example.retrofit2ex.domain.model.UserModel
 import com.example.retrofit2ex.ui.UserItemView
 import com.google.android.material.composethemeadapter.MdcTheme
 
-class UseAdapter: ListAdapter<UserModel, RecyclerView.ViewHolder>(UserModelDiffCallback()) {
+class UserAdapter: ListAdapter<UserModel, RecyclerView.ViewHolder>(UserModelDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return UserViewHolder(ComposeView(parent.context))
     }
