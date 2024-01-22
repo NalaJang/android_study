@@ -15,6 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val getUserListUserCase: GetUserListUserCase): ViewModel() {
 
+    // StateFlow : 현재 상태와 새로운 상태 업데이트를 수집기에 내보내는 관찰 가능한 상태 홀더 흐름이다.
     private  val _userList = MutableStateFlow<List<UserModel>>(listOf())
     val userList: StateFlow<List<UserModel>> = _userList
 
@@ -24,6 +25,7 @@ class MainViewModel @Inject constructor(private val getUserListUserCase: GetUser
 
     private fun readUserList() {
         viewModelScope.launch(Dispatchers.IO) {
+            // value 를 통해 현재 상태 값을 읽는다.
             _userList.value = getUserListUserCase(1)
         }
     }
