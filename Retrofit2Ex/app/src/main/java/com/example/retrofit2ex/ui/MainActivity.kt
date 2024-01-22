@@ -1,7 +1,8 @@
-package com.example.retrofit2ex
+package com.example.retrofit2ex.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.retrofit2ex.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

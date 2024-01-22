@@ -2,7 +2,6 @@ package com.example.retrofit2ex.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.retrofit2ex.data.repository.UserRepository
 import com.example.retrofit2ex.domain.model.UserModel
 import com.example.retrofit2ex.domain.usecase.GetUserListUserCase
 import dagger.hilt.android.lifecycle.HiltViewModel
