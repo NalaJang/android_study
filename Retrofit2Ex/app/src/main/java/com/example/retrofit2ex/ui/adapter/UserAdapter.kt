@@ -9,6 +9,7 @@ import com.example.retrofit2ex.domain.model.UserModel
 import com.example.retrofit2ex.ui.UserItemView
 import com.google.android.material.composethemeadapter.MdcTheme
 
+// DiffUtil 를 활용하기 위해 ListAdapter 사용
 class UserAdapter: ListAdapter<UserModel, RecyclerView.ViewHolder>(UserModelDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return UserViewHolder(ComposeView(parent.context))
