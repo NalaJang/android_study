@@ -6,6 +6,6 @@ import retrofit2.http.Query
 
 interface NetworkService {
 
-    @GET
+    @GET("api/users")
     suspend fun getUserList(@Query("page") page: Int): UserListResponse
 }
