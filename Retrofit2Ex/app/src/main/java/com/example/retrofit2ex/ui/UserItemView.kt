@@ -18,9 +18,11 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.retrofit2ex.domain.model.UserModel
 
+// @Preview 를 사용해서 UI 미리보기를 하려면 매개변수를 사용하지 않아야 한다.
 @Composable
 fun UserItemView(userModel: UserModel) {
     Card(
+        // modifier : Compose 의 구성 요소들을 꾸미거나 행동을 추가하기 위한 요소들의 모임
         modifier = Modifier
             .fillMaxWidth()
             .height(64.dp)
