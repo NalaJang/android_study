@@ -1,4 +1,4 @@
-package com.example.retrofit2ex.ui.viewModel
+package com.example.retrofit2ex.ui.presenter
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

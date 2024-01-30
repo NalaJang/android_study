@@ -9,7 +9,7 @@
             type="com.example.retrofit2ex.ui.adapter.UserAdapter" />
         <variable
             name="viewModel"
-            type="com.example.retrofit2ex.ui.viewModel.MainViewModel" />
+            type="com.example.retrofit2ex.ui.presenter.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

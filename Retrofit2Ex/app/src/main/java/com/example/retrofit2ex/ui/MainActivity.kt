@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.retrofit2ex.R
 import com.example.retrofit2ex.databinding.ActivityMainBinding
 import com.example.retrofit2ex.ui.adapter.UserAdapter
-import com.example.retrofit2ex.ui.viewModel.MainViewModel
+import com.example.retrofit2ex.ui.presenter.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
