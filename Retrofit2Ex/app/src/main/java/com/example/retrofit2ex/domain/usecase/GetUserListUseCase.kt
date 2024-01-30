@@ -5,7 +5,7 @@ import com.example.retrofit2ex.domain.model.UserModel
 import com.example.retrofit2ex.domain.translator.UserTranslator.toUserModelList
 import javax.inject.Inject
 
-class GetUserListUserCase @Inject constructor(
+class GetUserListUseCase @Inject constructor(
     private val userRepository: UserRepository
 ) {
     suspend operator fun invoke(page: Int): List<UserModel> {
