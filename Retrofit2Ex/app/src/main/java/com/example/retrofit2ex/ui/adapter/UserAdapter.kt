@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit2ex.domain.model.UserModel
-import com.example.retrofit2ex.ui.UserItemView
+import com.example.retrofit2ex.ui.presenter.UserItemView
 import com.google.android.material.composethemeadapter.MdcTheme
 
 // DiffUtil 를 활용하기 위해 ListAdapter 사용
