@@ -13,4 +13,6 @@ class GetUserListUseCase @Inject constructor(
     suspend operator fun invoke(page: Int): List<UserModel> {
         return userRepository.getUserList(page).toUserModelList()
     }
+
+    suspend operator fun invoke(): List<UserModel> = userRepository.getUsers()
 }
