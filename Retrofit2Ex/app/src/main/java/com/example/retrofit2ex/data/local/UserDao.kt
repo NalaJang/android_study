@@ -13,5 +13,8 @@ interface UserDao {
     suspend fun getAllUser(): List<UserModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveFavorite(userModel: UserModel)
+    suspend fun saveUserToDB(userModel: UserModel)
+
+    @Query("UPDATE user SET isFavorite = :isFavorite WHERE id = :id")
+    suspend fun updateFavorite(isFavorite: Boolean, id: Int)
 }

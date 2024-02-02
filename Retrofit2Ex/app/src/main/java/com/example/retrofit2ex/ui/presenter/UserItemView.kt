@@ -10,13 +10,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarOutline
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -26,13 +26,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.retrofit2ex.domain.model.UserModel
 
 // @Preview 를 사용해서 UI 미리보기를 하려면 매개변수를 사용하지 않아야 한다.
 @Composable
-fun UserItemView(userModel: UserModel) {
+fun UserItemView(
+    userModel: UserModel,
+    mainViewModel: MainViewModel = viewModel()
+) {
+
+    val id by remember { mutableIntStateOf(userModel.id) }
     var isFavorite by remember { mutableStateOf(false) }
 
     Card(
@@ -65,7 +71,10 @@ fun UserItemView(userModel: UserModel) {
             Spacer(modifier = Modifier.weight(1f))
             FavoriteButton(
                 isFavorite = isFavorite,
-                onClick = {isFavorite = !isFavorite}
+                onClick = {
+                    isFavorite = !isFavorite
+                    mainViewModel.updateFavorite(isFavorite, id)
+                }
             )
         }
     }

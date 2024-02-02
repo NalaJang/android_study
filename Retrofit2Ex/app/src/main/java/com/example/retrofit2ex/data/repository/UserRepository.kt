@@ -18,4 +18,8 @@ class UserRepository @Inject constructor(
     }
 
     suspend fun getUsers(): List<UserModel> = userDao.getAllUser()
+
+    suspend fun saveUserToDB(userModel: UserModel) = userDao.saveUserToDB(userModel)
+
+    suspend fun updateFavorite(isFavorite: Boolean, id: Int) = userDao.updateFavorite(isFavorite, id)
 }

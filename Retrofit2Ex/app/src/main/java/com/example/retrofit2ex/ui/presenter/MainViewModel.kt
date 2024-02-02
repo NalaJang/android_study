@@ -36,4 +36,16 @@ class MainViewModel @Inject constructor(private val getUserListUseCase: GetUserL
             _userList.value = getUserListUseCase.invoke()
         }
     }
+
+    fun saveUserToDB(userModel: UserModel) {
+        viewModelScope.launch {
+            getUserListUseCase.invoke(userModel)
+        }
+    }
+
+    fun updateFavorite(isFavorite: Boolean, id: Int) {
+        viewModelScope.launch {
+            getUserListUseCase.invoke(isFavorite, id)
+        }
+    }
 }
