@@ -1,8 +1,6 @@
 package com.example.retrofit2ex.di
 
-import android.app.Application
 import android.content.Context
-import androidx.room.Room
 import com.example.retrofit2ex.data.local.UserDao
 import com.example.retrofit2ex.data.local.UserDatabase
 import dagger.Module
@@ -22,9 +20,8 @@ class DatabaseModule {
     // UserDatabase 는 Room 에서 생성하지 않는, 프로젝트에서 소유하지 않는 클래스이기 때문에
     // @Provides 를 사용하여 제공한다.
     fun provideDatabase(@ApplicationContext context: Context): UserDatabase =
-        Room.databaseBuilder(context, UserDatabase::class.java, "user_db")
-            .fallbackToDestructiveMigration()
-            .build()
+        // 초기 데이터를 넣기 위해 addCallback 이 필요했고 기존의 코드를 UserDatabase 로 옮겼다.
+        UserDatabase.getInstance(context)
 
 
     @Provides
