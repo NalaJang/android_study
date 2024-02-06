@@ -12,7 +12,7 @@ interface UserDao {
     @Query("SELECT * FROM user")
     suspend fun getAllUser(): List<UserModel>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun saveUserToDB(userModel: UserModel)
 
     @Query("UPDATE user SET isFavorite = :isFavorite WHERE id = :id")

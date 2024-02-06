@@ -1,5 +1,6 @@
 package com.example.retrofit2ex.ui.presenter
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.retrofit2ex.domain.model.UserModel
@@ -28,6 +29,9 @@ class MainViewModel @Inject constructor(private val getUserListUseCase: GetUserL
             // value 를 통해 현재 상태 값을 읽는다.
             // invoke 함수를 이용해 GetUserListUseCase 의 함수를 함수 이름 없이 간편하게 불러왔다.
             _userList.value = getUserListUseCase(1)
+
+            // 초기 데이터 넣기
+            saveUserToDB(_userList.value)
         }
     }
 
@@ -37,9 +41,11 @@ class MainViewModel @Inject constructor(private val getUserListUseCase: GetUserL
         }
     }
 
-    fun saveUserToDB(userModel: UserModel) {
-        viewModelScope.launch {
-            getUserListUseCase.invoke(userModel)
+    private fun saveUserToDB(aa: List<UserModel>) {
+        for( i in aa.indices) {
+            viewModelScope.launch {
+                getUserListUseCase.invoke(aa[i])
+            }
         }
     }
 
