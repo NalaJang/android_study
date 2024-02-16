@@ -39,7 +39,7 @@ fun UserItemView(
 ) {
 
     val id by remember { mutableIntStateOf(userModel.id) }
-    var isFavorite by remember { mutableStateOf(false) }
+    var isFavorite by remember { mutableStateOf(userModel.isFavorite) }
 
     Card(
         // modifier : Compose 의 구성 요소들을 꾸미거나 행동을 추가하기 위한 요소들의 모임

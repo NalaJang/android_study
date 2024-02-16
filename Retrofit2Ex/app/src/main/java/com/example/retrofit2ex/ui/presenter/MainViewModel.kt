@@ -21,17 +21,24 @@ class MainViewModel @Inject constructor(private val getUserListUseCase: GetUserL
 
     init {
         readUserList()
-        getUserListFromLocalDB()
     }
 
     private fun readUserList() {
         viewModelScope.launch(Dispatchers.IO) {
-            // value 를 통해 현재 상태 값을 읽는다.
-            // invoke 함수를 이용해 GetUserListUseCase 의 함수를 함수 이름 없이 간편하게 불러왔다.
-            _userList.value = getUserListUseCase(1)
 
-            // 초기 데이터 넣기
-            saveUserToDB(_userList.value)
+            val localData = getUserListUseCase.invoke()
+
+            // DB 가 비어있을 때(앱의 첫 실행 등)만 초기 데이터를 저장하도록 했다.
+            if( localData.isEmpty() ) {
+                // value 를 통해 현재 상태 값을 읽는다.
+                // invoke 함수를 이용해 GetUserListUseCase 의 함수를 함수 이름 없이 간편하게 불러왔다.
+                _userList.value = getUserListUseCase(1)
+                // 초기 데이터 저장
+                saveUserToDB(_userList.value)
+
+            } else {
+                _userList.value = getUserListUseCase.invoke()
+            }
         }
     }
 
