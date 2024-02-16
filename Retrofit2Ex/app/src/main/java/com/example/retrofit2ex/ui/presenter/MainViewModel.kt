@@ -1,6 +1,5 @@
 package com.example.retrofit2ex.ui.presenter
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.retrofit2ex.domain.model.UserModel
@@ -39,12 +38,6 @@ class MainViewModel @Inject constructor(private val getUserListUseCase: GetUserL
             } else {
                 _userList.value = getUserListUseCase.invoke()
             }
-        }
-    }
-
-    private fun getUserListFromLocalDB() {
-        viewModelScope.launch(Dispatchers.IO) {
-            _userList.value = getUserListUseCase.invoke()
         }
     }
 
