@@ -49,8 +49,11 @@ class MainViewModel @Inject constructor(private val getUserListUseCase: GetUserL
         }
     }
 
+    // Dispatchers.IO : I/O 작업에 사용된다. 파일 읽기/쓰기, 네트워크 호출과 같은 블로킹되는 작업에 유용하다.
+    // (Dispatchers.IO) 를 사용하여 백그라운드에서 스레드가 실행되도록 한다.
+    // 이렇게 하면 메인 스레드를 차단하지 않고 작업을 수행할 수 있어 앱의 응답성이 향상된다.
     fun updateFavorite(isFavorite: Boolean, id: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             getUserListUseCase.invoke(isFavorite, id)
         }
     }
